@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_gradient"
+    tools:context=".MainActivity">
+
+
+    <ImageButton
+        android:id="@+id/profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="16dp"
+        android:background="@null"
+        android:onClick="profileClick"
+        android:src="@drawable/profile"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="16dp"
+        android:background="@null"
+        android:onClick="exitClick"
+        android:src="@drawable/exit"
+        app:layout_constraintRight_toLeftOf="@id/profile"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/card"
+        android:layout_width="402dp"
+        android:layout_height="210dp"
+        android:src="@drawable/card"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="202dp" />
+
+    <TextView
+        android:id="@+id/cardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Visa Signature"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="162dp" />
+
+    <TextView
+        android:id="@+id/money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ваш баланс\n213.17 ₽"
+        android:textColor="@color/white"
+        android:textSize="65px"
+
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="72dp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Операции"
+        android:textColor="@color/black"
+        android:textSize="65px"
+
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="419dp" />
+
+    <Button
+        android:id="@+id/remittance"
+        android:layout_width="185dp"
+        android:layout_height="57dp"
+        android:background="@drawable/rounded_corner"
+        android:onClick="remittanceClick"
+        android:text="Перевод"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:backgroundTint="@null"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="460dp" />
+
+    <Button
+        android:id="@+id/pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        android:onClick="payClick"
+        android:text="Оплатить"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:backgroundTint="@null"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="547dp" />
+
+    <Button
+        android:id="@+id/office"
+        android:layout_width="185dp"
+        android:layout_height="54dp"
+        android:background="@drawable/rounded_corner"
+        android:onClick="officeClick"
+        android:text="Офис"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:backgroundTint="@null"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="640dp" />
+
+    <ImageView
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:src="@drawable/office1"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="655dp" />
+
+    <ImageView
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:src="@drawable/translation"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="479dp" />
+
+    <ImageView
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:src="@drawable/pay"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="567dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
