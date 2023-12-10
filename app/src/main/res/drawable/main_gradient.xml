@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:tileMode="repeat">
     <item>
         <shape>
             <gradient
@@ -9,7 +11,7 @@
                 android:type="linear" />
         </shape>
     </item>
-    <item android:top="150dp">
+    <item android:top="150dp" >
         <shape>
             <solid android:color="#FFFFFF" />
             <corners

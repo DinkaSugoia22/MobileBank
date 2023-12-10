@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,13 +8,16 @@
     android:background="@drawable/main_gradient"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <ImageButton
         android:id="@+id/profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
         android:background="@null"
         android:onClick="profileClick"
         android:src="@drawable/profile"
@@ -24,7 +28,7 @@
         android:id="@+id/exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="16dp"
         android:background="@null"
         android:onClick="exitClick"
@@ -32,13 +36,37 @@
         app:layout_constraintRight_toLeftOf="@id/profile"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/card"
-        android:layout_width="402dp"
-        android:layout_height="210dp"
-        android:src="@drawable/card"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="202dp" />
+        <TextView
+            android:id="@+id/balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ваш баланс"
+            android:textColor="@color/white"
+            android:textSize="65px"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="72dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            android:id="@+id/money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="213.17"
+            android:textColor="@color/white"
+            android:textSize="65px"
+            android:layout_marginLeft="7dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/balance"/>
+
+        <TextView
+            android:id="@+id/value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" ₽"
+            android:textColor="@color/white"
+            android:textSize="65px"
+            app:layout_constraintLeft_toRightOf="@id/money"
+            app:layout_constraintTop_toBottomOf="@id/balance"/>
 
     <TextView
         android:id="@+id/cardText"
@@ -48,30 +76,32 @@
         android:text="Visa Signature"
         android:textColor="@color/black"
         android:textSize="22sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="162dp" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="26dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/money"/>
+
+        <ImageView
+            android:id="@+id/card"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:src="@drawable/card"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/cardText"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TextView
-        android:id="@+id/money"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ваш баланс\n213.17 ₽"
-        android:textColor="@color/white"
-        android:textSize="65px"
-
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="72dp" />
-
-
-    <TextView
+        android:id="@+id/operations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Операции"
         android:textColor="@color/black"
         android:textSize="65px"
-
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="419dp" />
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card"/>
 
     <Button
         android:id="@+id/remittance"
@@ -83,8 +113,10 @@
         android:textColor="@color/black"
         android:textSize="30sp"
         app:backgroundTint="@null"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="460dp" />
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/operations" />
 
     <Button
         android:id="@+id/pay"
@@ -95,9 +127,12 @@
         android:text="Оплатить"
         android:textColor="@color/black"
         android:textSize="30sp"
+        android:paddingLeft="30dp"
         app:backgroundTint="@null"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="547dp" />
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/remittance" />
 
     <Button
         android:id="@+id/office"
@@ -108,29 +143,41 @@
         android:text="Офис"
         android:textColor="@color/black"
         android:textSize="30sp"
+        android:paddingLeft="-20dp"
+        android:paddingTop="4dp"
         app:backgroundTint="@null"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="640dp" />
-
-    <ImageView
-        android:layout_width="23dp"
-        android:layout_height="23dp"
-        android:src="@drawable/office1"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="655dp" />
-
-    <ImageView
-        android:layout_width="23dp"
-        android:layout_height="23dp"
-        android:src="@drawable/translation"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="479dp" />
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pay" />
 
     <ImageView
         android:layout_width="23dp"
         android:layout_height="23dp"
         android:src="@drawable/pay"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="567dp" />
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintLeft_toLeftOf="@id/pay"
+        app:layout_constraintTop_toTopOf="@id/pay" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:src="@drawable/translation"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintLeft_toLeftOf="@id/remittance"
+        app:layout_constraintTop_toTopOf="@id/remittance" />
+
+    <ImageView
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:src="@drawable/office1"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintLeft_toLeftOf="@id/office"
+        app:layout_constraintTop_toTopOf="@id/office"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>

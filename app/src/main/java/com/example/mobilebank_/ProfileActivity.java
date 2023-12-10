@@ -17,6 +17,7 @@ public class ProfileActivity extends AppCompatActivity implements SeekBar.OnSeek
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_profile);
 
         final SeekBar seekBar = (SeekBar)findViewById(R.id.seekBar);
@@ -25,16 +26,16 @@ public class ProfileActivity extends AppCompatActivity implements SeekBar.OnSeek
         mTextView = findViewById(R.id.textLabel2);
         mTextView.setText("0");
 
-        limit = getSharedPreferences("Limit", MODE_PRIVATE);
-        limited = limit.getInt("limit", limited);
+        limit = getSharedPreferences("limit", MODE_PRIVATE);
+        limited = limit.getInt("save_limit", limited);
 
         mTextView.setText(String.valueOf(limited));
         seekBar.setProgress(limited);
 
-
     }
     public void menuClick(View view){
         Intent menu = new Intent(this, MainActivity.class);
+        menu.putExtra("limit", limited);
         startActivity(menu);
     }
 
