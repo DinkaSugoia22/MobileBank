@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class RemittanceActivity2 extends AppCompatActivity {
+public class PayActivity2 extends AppCompatActivity {
     public double money;
     public int limit;
     // TODO Добавить сканнер QR-code
@@ -20,9 +20,9 @@ public class RemittanceActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_remittance2);
-        EditText phone = findViewById(R.id.phoneNum);
-        phone.setHintTextColor(Color.rgb(173, 111, 176));
+        setContentView(R.layout.activity_pay2);
+        EditText account = findViewById(R.id.account);
+        account.setHintTextColor(Color.rgb(173, 111, 176));
         EditText sum = findViewById(R.id.sum);
         sum.setHintTextColor(Color.rgb(173, 111, 176));
 
@@ -47,40 +47,39 @@ public class RemittanceActivity2 extends AppCompatActivity {
         startActivity(menu);
     }
 
-    public void toRemit(View view) {
-        EditText phone = findViewById(R.id.phoneNum);
+    public void toPay(View view) {
+        EditText account = findViewById(R.id.account);
         EditText sum = findViewById(R.id.sum);
-        String mob = phone.getText().toString();
+        String acc = account.getText().toString();
         String sumText = sum.getText().toString();
 
-        if(sumText.isEmpty() || mob.isEmpty()) {
+        if(sumText.isEmpty() || acc.isEmpty()) {
             Toast toast = Toast.makeText(this, "Некоторые поля не заполнены", Toast.LENGTH_LONG);
             toast.show();
             return;
         }
         double sumD = Double.parseDouble(sumText);
 
-        if (mob != null) {
-                if (((mob.length() == 12 && mob.contains("+7"))
-                        || (mob.length() == 11 && mob.substring(0, 1).contains("8")))
-                            && sumD > 0) {
-                    if (sumD <= money) {
-                            if (sumD <= limit) {
-                                money -= sumD;
-                                Toast toast = Toast.makeText(this, "Перевод успешно выполнен", Toast.LENGTH_LONG);
-                                toast.show();
-                            } else {
-                                Toast toast = Toast.makeText(this, "Сумма превышает лимит", Toast.LENGTH_LONG);
-                                toast.show();
-                            }
-                        } else{
-                        Toast toast = Toast.makeText(this, "Сумма превышает баланс", Toast.LENGTH_LONG);
+        if (acc != null) {
+            if (acc.length() == 20 && sumD > 0) {
+                if (sumD <= money) {
+                    if (sumD <= limit) {
+                        money -= sumD;
+                        Toast toast = Toast.makeText(this, "Перевод успешно выполнен" , Toast.LENGTH_LONG);
                         toast.show();
                     }
-                }
-                    } else {
-                        Toast toast = Toast.makeText(this, "Некоторые поля указаны неверно", Toast.LENGTH_LONG);
+                    else {
+                        Toast toast = Toast.makeText(this, "Сумма превышает лимит", Toast.LENGTH_LONG);
                         toast.show();
+                    }
+                } else{
+                    Toast toast = Toast.makeText(this, "Сумма превышает баланс", Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            } else {
+                Toast toast = Toast.makeText(this, "Некоторые поля указаны неверно", Toast.LENGTH_LONG);
+                toast.show();
             }
         }
     }
+}

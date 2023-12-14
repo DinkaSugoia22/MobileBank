@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Mobilebank_"
         tools:targetApi="31">
         <activity
+            android:name=".PayActivity2"
+            android:exported="false" />
+        <activity
             android:name=".RemittanceActivity2"
             android:exported="false" />
         <activity

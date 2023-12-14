@@ -5,34 +5,50 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private double money = 63000.31;
-
-    public int limit = 0;
+    private double money = 0;
+    public int limit = 100000;
     private TextView moneyLabel;
-
-    // TODO - можно переделать немного дизайн, изменить отступы, расположение, величины измерения(для всех activity)
-    // TODO - по аналогии с переводом сделать окно для оплаты, скорее всего будут те же самые проблемы
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        money = 313131;
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        money = sharedPreferences.getFloat("money", (float) money);
+
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            limit = extras.getInt("limit");
+            limit = extras.getInt("limit", 0);
             money = extras.getDouble("money", money);
         }
 
-        moneyLabel = findViewById(R.id.money);
-        moneyLabel.setText(String.valueOf(money));
+        String moneyText = String.format("%.2f", money);
 
+        moneyLabel = findViewById(R.id.money);
+        moneyLabel.setText((moneyText));
+
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putFloat("money", (float) money);
+        editor.apply();
     }
 
     // TODO - Возможно провести рефакторинг(тоже для всех activity, чтобы выглядело примерно одинаково и красиво) :)
@@ -52,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void payClick(View view){
         Intent pay = new Intent(this, PayActivity.class);
+        pay.putExtra("money", money);
+        pay.putExtra("limit", limit);
         startActivity(pay);
     }
 
