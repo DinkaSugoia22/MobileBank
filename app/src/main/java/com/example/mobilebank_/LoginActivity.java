@@ -15,10 +15,10 @@ import com.chaos.view.PinView;
 
 public class LoginActivity extends AppCompatActivity {
     PinView pinView;
-    // TODO - сделать проверку какую-либо простецкую проверку пина, даже если это сравнение со строкой
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String pinCode = "8965";
         setContentView(R.layout.activity_login);
         pinView = findViewById(R.id.PINfield);
         pinView.setPasswordHidden(false);
@@ -35,7 +35,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().length() == 4) {
-                    startActivity(menu);
+                    if(s.toString().equals(pinCode)) {
+                        startActivity(menu);
+                    } else {
+                        Toast.makeText(LoginActivity.this, "ПИН-код введён неверно", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
