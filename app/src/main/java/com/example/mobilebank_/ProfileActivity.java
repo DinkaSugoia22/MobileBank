@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class ProfileActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
     // TODO - добавить возможность смены аватара(хз), в принципе что-то добавить и подредачить дизайн
     private TextView mTextView;
-    private int limited;
+    private int limited = 100000;
     private SharedPreferences limit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class ProfileActivity extends AppCompatActivity implements SeekBar.OnSeek
         seekBar.setOnSeekBarChangeListener(this);
 
         mTextView = findViewById(R.id.textLabel2);
-        mTextView.setText("0");
+        mTextView.setText("100000");
 
         limit = getSharedPreferences("limit", MODE_PRIVATE);
         limited = limit.getInt("save_limit", limited);
