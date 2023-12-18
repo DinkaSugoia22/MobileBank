@@ -16,7 +16,7 @@ public class RemittanceActivity2 extends AppCompatActivity {
     public double money;
     public int limit;
     // TODO Добавить сканнер QR-code
-    // TODO Возможно добавить три различных окна для каждой из кнопок на прошлом окне. Т.е отдельно по Сбп, клиенту банка, в другую страну (по желанию)
+    // TODO Добавить три (или больше) различных окна для каждой из кнопок на прошлом окне. Т.е отдельно по Сбп, клиенту банка, в другую страну и др.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,22 +65,23 @@ public class RemittanceActivity2 extends AppCompatActivity {
                         || (mob.length() == 11 && mob.substring(0, 1).contains("8")))
                             && sumD > 0) {
                     if (sumD <= money) {
-                            if (sumD <= limit) {
-                                money -= sumD;
-                                Toast toast = Toast.makeText(this, "Перевод успешно выполнен", Toast.LENGTH_LONG);
-                                toast.show();
-                            } else {
-                                Toast toast = Toast.makeText(this, "Сумма превышает лимит", Toast.LENGTH_LONG);
-                                toast.show();
-                            }
-                        } else{
+                        if (sumD <= limit) {
+                            money -= sumD;
+                            Toast toast = Toast.makeText(this, "Перевод успешно выполнен" , Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                        else {
+                            Toast toast = Toast.makeText(this, "Сумма превышает лимит", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    } else{
                         Toast toast = Toast.makeText(this, "Сумма превышает баланс", Toast.LENGTH_LONG);
                         toast.show();
                     }
+                } else {
+                    Toast toast = Toast.makeText(this, "Некоторые поля указаны неверно", Toast.LENGTH_LONG);
+                    toast.show();
                 }
-                    } else {
-                        Toast toast = Toast.makeText(this, "Некоторые поля указаны неверно", Toast.LENGTH_LONG);
-                        toast.show();
-            }
         }
     }
+}

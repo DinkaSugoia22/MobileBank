@@ -16,7 +16,7 @@ public class PayActivity2 extends AppCompatActivity {
     public double money;
     public int limit;
     // TODO Добавить сканнер QR-code
-    // TODO Возможно добавить три различных окна для каждой из кнопок на прошлом окне. Т.е отдельно по Сбп, клиенту банка, в другую страну (по желанию)
+    // TODO Добавить три (или больше) различных окна для каждой из кнопок на прошлом окне. Т.е отдельно для оплаты счетов, налогов и др.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

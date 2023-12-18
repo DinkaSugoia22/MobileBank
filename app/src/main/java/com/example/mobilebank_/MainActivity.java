@@ -21,12 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        money = 313131;
-
+        money = 200000;
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         money = sharedPreferences.getFloat("money", (float) money);
-
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -51,7 +48,15 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    // TODO - Возможно провести рефакторинг(тоже для всех activity, чтобы выглядело примерно одинаково и красиво) :)
+    // TODO - Провести рефакторинг
+    //  (тоже для всех activity, чтобы выглядело примерно одинаково и красиво)
+
+    // TODO - Сделать оптимизацию кода(в будущем)
+
+    // TODO - Реализовать модель MVVM(Model-View-ViewModel) в данном приложении,
+    //  а также добавить методы onPause(), onResume() и т.д
+
+
     public void exitClick(View view){
         this.finishAffinity();
     }

@@ -10,7 +10,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
-    // TODO - добавить возможность смены аватара(хз), в принципе что-то добавить и подредачить дизайн
+    // TODO - Добавить возможность смены аватара из галлереи устройства или из предложенных вариантов,
+    //  добавить различного дополнительного функционала в профиль
     private TextView mTextView;
     private int limited = 100000;
     private SharedPreferences limit;
@@ -31,7 +32,6 @@ public class ProfileActivity extends AppCompatActivity implements SeekBar.OnSeek
 
         mTextView.setText(String.valueOf(limited));
         seekBar.setProgress(limited);
-
     }
     public void menuClick(View view){
         Intent menu = new Intent(this, MainActivity.class);
